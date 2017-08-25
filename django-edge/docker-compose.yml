@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - ~/django-edge1/django_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=hoge
+      - POSTGRES_PASSWORD=mysecretpassword
+
+  web:
+    # https://github.com/Drunkar/dockerfiles/tree/master/anaconda-django-edge
+    image: drunkar/anaconda-django-edge
+    volumes:
+      - ~/django-edge1/django-edge:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
