@@ -1,20 +1,23 @@
-version: "3"
+version: "3.3"
 
 services:
   db:
     image: postgres:latest
     volumes:
-      - ~/django-edge1/django_db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=hoge
-      - POSTGRES_PASSWORD=mysecretpassword
+      - ~/django-edge/django-db:/var/lib/postgresql/data
+    env_file:
+      - db-variables.env
 
   web:
     # https://github.com/Drunkar/dockerfiles/tree/master/anaconda-django-edge
     image: drunkar/anaconda-django-edge
     volumes:
-      - ~/django-edge1/django-edge:/usr/src/app
+      - ~/django-edge/django-edge:/usr/src/app
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+    links:
+      - db:db
+    environment:
+      - DB_PORT_5432_TCP_ADDR=db
+    env_file:
+      - db-variables.env

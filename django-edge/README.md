@@ -5,10 +5,12 @@ django with edge template http://django-edge.readthedocs.io/en/latest/ and postg
 
 ## Usage
 
-### 1. Change db name and password
+### 1. Set db name and password
 
-- `POSTGRES_USER`: user and db name
-- `POSTGRES_PASSWORD`: password for `POSTGRES_USER`
+in `db-variables.env` file
+
+- `POSTGRES_USER`, `DB_ENV_POSTGRES_USER`: must be the same. user name.
+- `POSTGRES_PASSWORD`, `DB_ENV_POSTGRES_PASSWORD`: must be the same. user password.
 
 ### 2. Up
 
