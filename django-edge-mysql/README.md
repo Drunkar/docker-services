@@ -27,3 +27,18 @@ docker exec -it djangoedgemysql_web_1 bash
 cd my_proj/src/ && python manage.py createsuperuser
 exit
 ```
+
+### 4. Change setings
+
+In `my_proj/src/my_proj/settings/base.py'
+
+```
+ALLOWED_HOSTS = ['*']
+```
+
+In `my_proj/src/my_proj/settings/development.py'
+
+```
+INTERNAL_IPS = ['*']
+ALLOWED_HOSTS = ['*']
+```

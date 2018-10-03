@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - ~/django-edge/django-db:/var/lib/postgresql/data
+      - dbdata:/var/lib/postgresql/data
     env_file:
       - db-variables.env
 
@@ -21,3 +21,6 @@ services:
       - DB_PORT_5432_TCP_ADDR=db
     env_file:
       - db-variables.env
+
+volumes:
+    dbdata:
